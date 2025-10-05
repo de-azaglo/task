@@ -117,8 +117,24 @@ server {
     listen 80;
     server_name $DOMAIN_NAME;
 
-    # Redirect all HTTP requests to HTTPS
-    return 301 https://\$host\$request_uri;
+     # Enable rate limiting
+    limit_req zone=mylimit burst=20 nodelay;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host \$host;
+        proxy_cache_bypass \$http_upgrade;
+
+        # Disable buffering for streaming support
+        proxy_buffering off;
+        proxy_set_header X-Accel-Buffering no;
+    }
+
+    # # Redirect all HTTP requests to HTTPS
+    # return 301 https://\$host\$request_uri;
 }
 
 # Uncomment the following block if SSL is set up
@@ -151,6 +167,14 @@ EOL
 
 # Create symbolic link if it doesn't already exist
 sudo ln -s /etc/nginx/sites-available/task /etc/nginx/sites-enabled/task
+
+# Add domain to /etc/hosts if not already present (for local testing)
+if ! grep -q "$DOMAIN_NAME" /etc/hosts; then
+  echo "Adding $DOMAIN_NAME to /etc/hosts..."
+  echo "127.0.0.1 $DOMAIN_NAME" | sudo tee -a /etc/hosts
+else
+  echo "$DOMAIN_NAME already in /etc/hosts, skipping..."
+fi
 
 # Restart Nginx to apply the new configuration
 sudo systemctl restart nginx
