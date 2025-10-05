@@ -2,13 +2,10 @@
 
 # # Env Vars
 API_URL="http://localhost:8000" # for the demo app
-# POSTGRES_USER="myuser"
-# POSTGRES_PASSWORD=$(openssl rand -base64 12)  # Generate a random 12-character password
-# POSTGRES_DB="mydatabase"
-# SECRET_KEY="my-secret" # for the demo app
-# NEXT_PUBLIC_SAFE_KEY="safe-key" # for the demo app
+SECRET_KEY="my-secret" # for the demo app
+NEXT_PUBLIC_SAFE_KEY="safe-key" # for the demo app
 DOMAIN_NAME="task.local" # replace with your own
-# EMAIL="your-email@example.com" # replace with your own
+EMAIL="rick@task.com" # replace with your own
 
 # Script Vars
 REPO_URL="https://github.com/de-azaglo/task.git"
@@ -160,8 +157,8 @@ fi
 ( crontab -l 2>/dev/null; echo "0 */12 * * * certbot renew --quiet && systemctl reload nginx" ) | crontab -
 
 # Output final message
-echo "Deployment complete. Your Next.js app and PostgreSQL database are now running.
-Next.js is available at https://$DOMAIN_NAME, and the PostgreSQL database is accessible from the web service.
+echo "Deployment complete. Your Next.js app.
+Next.js is available at https://$DOMAIN_NAME, 
 
 The .env file has been created with the following values:
 - API_URL
