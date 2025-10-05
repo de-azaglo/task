@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # # Env Vars
-API_URL="http://localhost:8000/api" # for the demo app
+API_URL="http://api.task.io/api" # for the demo app
 SECRET_KEY="my-secret" # for the demo app
 NEXT_PUBLIC_SAFE_KEY="safe-key" # for the demo app
 DOMAIN_NAME="task.io" # replace with your own
