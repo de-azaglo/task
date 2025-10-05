@@ -18,8 +18,8 @@ RUN npm config set fetch-retry-mintimeout 20000 && \
 
 
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; --network-timeout 300000; \
-  elif [ -f package-lock.json ]; then npm ci; --maxsockets 1; \
+  if [ -f yarn.lock ]; then yarn --frozen-lockfile --network-timeout 300000; \
+  elif [ -f package-lock.json ]; then npm ci --maxsockets 1; \
   elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
   fi
