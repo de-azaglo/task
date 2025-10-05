@@ -194,13 +194,18 @@ fi
 # ( crontab -l 2>/dev/null; echo "0 */12 * * * certbot renew --quiet && systemctl reload nginx" ) | crontab -
 
 # Output final message
-echo "Deployment complete. Your Next.js app.
-Next.js is available at https://$DOMAIN_NAME, 
+echo "
+===============================================
+Deployment complete!
+===============================================
+Your Next.js app is available at: http://$DOMAIN_NAME
 
-The .env file has been created with the following values:
+Environment variables configured:
 - API_URL
 - SECRET_KEY
-- NEXT_PUBLIC_SAFE_KEY"
+- NEXT_PUBLIC_SAFE_KEY
 
-
-NOTE: SSL/HTTPS is currently disabled. When you have a domain, uncomment the SSL sections in the script."
+NOTE: SSL/HTTPS is currently disabled.
+When you have a domain, update the script to enable SSL.
+===============================================
+"
