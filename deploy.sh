@@ -4,7 +4,7 @@
 API_URL="http://localhost:8000" # for the demo app
 SECRET_KEY="my-secret" # for the demo app
 NEXT_PUBLIC_SAFE_KEY="safe-key" # for the demo app
-DOMAIN_NAME="task.local" # replace with your own
+DOMAIN_NAME="task.io" # replace with your own
 EMAIL="rick@task.com" # replace with your own
 
 # Script Vars
@@ -99,7 +99,7 @@ if [ ! -f /etc/letsencrypt/ssl-dhparams.pem ]; then
 fi
 
 # Create Nginx config with reverse proxy, SSL support, rate limiting, and streaming support
-sudo cat > /etc/nginx/sites-available/task <<EOL
+sudo tee > /etc/nginx/sites-available/task > /dev/null <<EOL
 limit_req_zone \$binary_remote_addr zone=mylimit:10m rate=10r/s;
 
 server {
