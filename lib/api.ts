@@ -20,7 +20,7 @@ export const api = {
     const data = await res.json();
     
     // Transform API response to include createdAt
-    return data.map((task: any) => ({
+    return data.data.map((task: any) => ({
       id: task.id.toString(),
       title: task.title,
       completed: task.completed,
@@ -41,7 +41,8 @@ export const api = {
 
     if (!res.ok) throw new Error('Failed to create task');
     
-    const data = await res.json();
+    const resp = await res.json();
+    const data = resp.data;
     return {
       id: data.id.toString(),
       title: data.title,
