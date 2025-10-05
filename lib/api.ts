@@ -15,8 +15,10 @@ export const api = {
       cache: 'no-store',
     });
     
-    if (!res.ok) console.log('Failed to fetch tasks from: ', res);
-    
+     if (!res.ok) {
+        console.error('Failed to fetch tasks. Status:', res.status);
+        return []; // Return empty array instead of continuing
+      }
     const data = await res.json();
     
     // Transform API response to include createdAt
