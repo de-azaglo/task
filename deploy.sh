@@ -100,7 +100,7 @@ sudo rm -f /etc/nginx/sites-enabled/task
 # fi
 
 # Create Nginx config with reverse proxy, SSL support, rate limiting, and streaming support
-sudo tee > /etc/nginx/sites-available/task > /dev/null <<EOL
+sudo tee /etc/nginx/sites-available/task > /dev/null <<EOL
 limit_req_zone \$binary_remote_addr zone=mylimit:10m rate=10r/s;
 
 server {
