@@ -11,7 +11,7 @@ DOMAIN_NAME="task.local" # replace with your own
 # EMAIL="your-email@example.com" # replace with your own
 
 # Script Vars
-REPO_URL="https://github.com/leerob/next-self-host.git"
+REPO_URL="https://github.com/de-azaglo/task.git"
 APP_DIR=~/task
 SWAP_SIZE="1G"  # Swap size of 1GB
 
@@ -71,7 +71,7 @@ else
   cd $APP_DIR
 fi
 
-# Create the .env file inside the app directory (~/myapp/.env)
+# Create the .env file inside the app directory (~/task/.env)
 echo "API_URL=$API_URL" >> "$APP_DIR/.env"
 
 # These are just for the demo of env vars
