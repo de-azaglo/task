@@ -15,7 +15,7 @@ export const api = {
       cache: 'no-store',
     });
     
-    if (!res.ok) throw new Error('Failed to fetch tasks');
+    if (!res.ok) console.log('Failed to fetch tasks from: ', res);
     
     const data = await res.json();
     
