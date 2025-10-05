@@ -79,11 +79,11 @@ else
 fi
 
 # Create the .env file inside the app directory (~/task/.env)
-echo "API_URL=$API_URL" >> "$APP_DIR/.env"
-
-# These are just for the demo of env vars
-echo "SECRET_KEY=$SECRET_KEY" >> "$APP_DIR/.env"
-echo "NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY" >> "$APP_DIR/.env"
+cat > "$APP_DIR/.env" <<EOF
+API_URL=$API_URL
+SECRET_KEY=$SECRET_KEY
+NEXT_PUBLIC_SAFE_KEY=$NEXT_PUBLIC_SAFE_KEY
+EOF
 
 # Install Nginx
 sudo apt install nginx -y
